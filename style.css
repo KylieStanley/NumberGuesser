@@ -28,6 +28,10 @@ form input:not(:first-child) {
   width: 8vw;
 }
 
+p {
+  font-size: 12px;
+}
+
 strong {
   color: #ED458B;
 }

@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header  {
+  background-color: #404041;
+  padding: 10px;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 60px;
+}
+
+.number-header {
+  color: #ED458B;
+  font-weight: 700;
+}
+
+.guesser-header {
+  color: #E6E7E8;
+  font-weight: 300;
+}
+
+form input:not(:first-child) {
+  width: 8vw;
+}
+
+strong {
+  color: #ED458B;
+}
+
+button {
+  background-color: #929497;
+  color: #FFFFFF;
+  border-radius: 15px;
+  padding: 5px;
+  font-weight: 300;
+}
+
+button:disabled {
+ background-color: #D0D2D3;
+}
+
+button:hover:enabled {
+  background-color: #EB008B;
+}
+
+section {
+  margin: 15px;
+}
+
+section > button {
+  width: 20vw;
+}
+
+input {
+  margin: 20px 1px 10px;
+  width: 40vw;
+}
+
+#guess-value, #too-high-low {
+  color: #404041;
+}
+
+#display-guess{
+  font-size: 100px;
+  color: #EB008B;
+}
+
+.reset-button {
+  width: 40vw;
+  margin: 10px;
+}

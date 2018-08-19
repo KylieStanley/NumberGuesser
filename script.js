@@ -6,8 +6,8 @@ var yourGuess = document.querySelector('#display-guess');
 var tooHighLow = document.querySelector('#too-high-low');
 var numberInput = document.querySelector('.number-input');
 var resetButton = document.querySelector('.reset-button');
-var randomNumber = Math.floor(Math.random() * 20 + 1);
-var maxInt = parseInt(20, 10);
+var randomNumber = Math.floor(Math.random() * 100 + 1);
+var maxInt = parseInt(100, 10);
 var minInt = parseInt(1, 10);
 
 //generate a random number when input fields are typed in

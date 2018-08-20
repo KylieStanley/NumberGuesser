@@ -1,20 +1,17 @@
+var numberInput = document.querySelector('.number-input');
 var rangeIncreased = document.querySelector('.range-increased');
 var guessButton = document.querySelector('#guess-button');
 var clearButton = document.querySelector('#clear-button');
 var yourGuessWas = document.querySelector('#guess-value');
 var yourGuess = document.querySelector('#display-guess');
-var tooHighLow = document.querySelector('#too-high-low');
-var numberInput = document.querySelector('.number-input');
-var resetButton = document.querySelector('.reset-button');
 var randomNumber = Math.floor(Math.random() * 100 + 1);
 var maxInt = parseInt(100, 10);
 var minInt = parseInt(1, 10);
 
-//generate a random number when input fields are typed in
+//generate a random number when input fields are typed in or range increases
 function generateRandomNumber() {
   var maxInput = document.querySelector('.max-input');
   var minInput = document.querySelector('.min-input');
-  maxInput = document.querySelector('.max-input');
   maxInt = parseInt(maxInput.value, 10);
   minInt = parseInt(minInput.value, 10);
 
@@ -30,6 +27,7 @@ guessButton.addEventListener('click', displayGuessInfo);
 function displayGuessInfo() {
   rangeIncreased.innerText = '';
   
+  var tooHighLow = document.querySelector('#too-high-low');
   var guessed = numberInput.value;
   var convertedToInt = parseInt(guessed, 10); 
   
@@ -41,16 +39,16 @@ function displayGuessInfo() {
     tooHighLow.innerText = 'Your number is outside the range!';
     yourGuessWas.innerText = '';
     yourGuess.innerText = '';
-  } else if (convertedToInt === randomNumber) {
-    tooHighLow.innerText = 'BOOM!';
-    displayUserGuess();
-    increaseRange();
-  } else if (convertedToInt > randomNumber) {
+  }  else if (convertedToInt > randomNumber) {
     tooHighLow.innerText = 'That is too high';
     displayUserGuess();
   } else if (convertedToInt < randomNumber) {
     tooHighLow.innerText = 'That is too low';
     displayUserGuess();
+  } else if (convertedToInt === randomNumber) {
+    tooHighLow.innerText = 'BOOM!';
+    displayUserGuess();
+    increaseRange();
   }
   enableResetButton();
 };
@@ -78,6 +76,7 @@ function toggleClearButton() {
 
 //Enables the reset button
 function enableResetButton() {
+  var resetButton = document.querySelector('.reset-button');
   resetButton.disabled = false;
 }
 

@@ -2,8 +2,10 @@ var numberInput = document.querySelector('.number-input');
 var rangeIncreased = document.querySelector('.range-increased');
 var guessButton = document.querySelector('#guess-button');
 var clearButton = document.querySelector('#clear-button');
-var yourGuessWas = document.querySelector('#guess-value');
+var yourGuessWas = document.querySelector('#your-guess-was');
 var yourGuess = document.querySelector('#display-guess');
+
+//Default random number on page load
 var randomNumber = Math.floor(Math.random() * 100 + 1);
 var maxInt = parseInt(100, 10);
 var minInt = parseInt(1, 10);
@@ -20,8 +22,8 @@ function generateRandomNumber() {
   } 
 }
 
-clearButton.addEventListener('click', clearInput);
 guessButton.addEventListener('click', displayGuessInfo);
+clearButton.addEventListener('click', clearInput);
 
 //change input to number and display information to user on correctness of guess
 function displayGuessInfo() {
@@ -79,7 +81,6 @@ function enableResetButton() {
   var resetButton = document.querySelector('.reset-button');
   resetButton.disabled = false;
 }
-
 
 //Increases the range when correct
 function increaseRange() {

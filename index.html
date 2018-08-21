@@ -10,10 +10,10 @@
       <h1 class="number-header">Number</h1>
       <h1 class="guesser-header">Guesser</h1>
     </header>
-    <form onsubmit="return false">
+    <form>
       <input type="number" name="numberfield" placeholder="Guess from 1-100 or choose your own:" min="1" max="100" class="number-input" oninput="toggleClearButton()">
-      <input type="number" name="min-number" class="min-input" placeholder="min" oninput="generateRandomNumber()">
-      <input type="number" name="max-number" class="max-input" placeholder="max" oninput="generateRandomNumber()">
+      <input type="number" name="min-number" class="min-input" placeholder="min" value ='1' oninput="generateRandomNumber()"><label>Min</label>
+      <input type="number" name="max-number" class="max-input" placeholder="max" value='100' oninput="generateRandomNumber()"><label>Max</label>
       <div class="range-increased"></div>
       <section class="guess-clear-buttons">
         <button type="button" id="guess-button">Guess</button>
@@ -24,7 +24,7 @@
         <p id="display-guess"></p>
         <p id="too-high-low"></p>
       </section>
-      <button class="reset-button" disabled onClick="window.location.reload()">Reset</button>
+      <button type="button" class="reset-button" disabled>Reset</button>
     </form>
     <script type="text/javascript" src="script.js"></script>
   </body>

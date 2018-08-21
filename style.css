@@ -35,10 +35,15 @@ form input:not(:first-child) {
   width: 8vw;
 }
 
+label {
+  font-size: 10px;
+}
+
 p {
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;
+
 }
 
 strong {

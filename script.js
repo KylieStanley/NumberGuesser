@@ -14,15 +14,16 @@ var guessCount = document.querySelector('.guess-count-value');
 guessCount.innerText = 0;
 var counter = 0;
 
-//Default random number anbd min/max on page load
-var randomNumber = Math.floor(Math.random() * 100 + 1);
-var maxInt = 100;
-var minInt = 1;
+var randomNumber;
+var maxInt;
+var minInt;
 
 //Guess and clear buttons
 guessButton.addEventListener('click', displayGuessInfo);
 clearButton.addEventListener('click', clearInput);
 resetButton.addEventListener('click', resetPage);
+
+window.onload = generateRandomNumber();
 
 //generate a random number when input fields are typed in or range increases
 function generateRandomNumber() {

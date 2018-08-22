@@ -50,7 +50,7 @@ strong {
 }
 
 label {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 label>input {
@@ -59,7 +59,7 @@ label>input {
 
 .guess-count, .guess-count-value {
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 button {

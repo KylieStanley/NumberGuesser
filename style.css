@@ -8,27 +8,45 @@ body {
 
 header  {
   background-color: #404041;
-  padding: 10px;
   text-align: center;
 }
 
 h1 {
   display: inline-block;
-  font-size: 60px;
+  font-size: 80px;
 }
 
 .number-header {
   color: #ED458B;
   font-weight: 700;
+  text-shadow: 2px 2px 8px #000000;
 }
 
 .guesser-header {
   color: #E6E7E8;
   font-weight: 300;
+  text-shadow: 2px 2px 8px #000000;
 }
 
 form {
   text-align: center;
+}
+
+input {
+  font-size: 15px;
+  padding: 10px;
+  margin: 20px 1px 10px;
+  width: 30vw;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+strong {
+  color: #ED458B;
 }
 
 label {
@@ -44,22 +62,14 @@ label>input {
   font-size: 12px;
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: center;
-
-}
-
-strong {
-  color: #ED458B;
-}
-
 button {
   background-color: #929497;
   border-radius: 15px;
+  box-shadow: 1px 1px 4px #000000;
   color: #FFFFFF;
   font-weight: 300;
+  font-size: 15px;
+  margin: 3px;
   padding: 5px;
 }
 
@@ -80,18 +90,18 @@ section > button {
   width: 20vw;
 }
 
-input {
-  margin: 20px 1px 10px;
-  width: 40vw;
-}
-
 #your-guess-was, #too-high-low {
   color: #404041;
+  transition: all 1s ease-in-out;
 }
 
 #display-guess{
   color: #EB008B;
   font-size: 100px;
+}
+
+.rotate-text { 
+  transform: rotate(1080deg);
 }
 
 .reset-button {

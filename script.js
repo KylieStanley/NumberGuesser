@@ -61,7 +61,8 @@ function displayGuessInfo() {
     displayUserGuess();
     increaseGuessCount();
     increaseRange();
-    tooHighLow.innerText = 'BOOM!';
+    tooHighLow.innerText = 'HOORAY!';
+    rotateText();
   }
   enableResetButton();
 };
@@ -72,10 +73,24 @@ function displayUserGuess() {
   yourGuess.innerText = numberInput.value;
 }
 
+//Scales 'Hoorary' up on correct guess
+function rotateText() {
+  tooHighLow.classList.toggle('rotate-text');
+}
+
 //Clears the input field
 function clearInput() {
   numberInput.value = '';
   toggleClearButton();
+  toggleGuessButton();
+}
+
+function toggleGuessButton() {
+  if (numberInput.value.length === 0) {
+    guessButton.disabled = true;
+  } else {
+    guessButton.disabled = false;
+  }
 }
 
 //disables the clear button when field is blank
@@ -95,18 +110,20 @@ function enableResetButton() {
 //Increases the range when correct
 function increaseRange() {
   var newMaxInput = parseInt(maxInput.value, 10) + 10;
+  var newMinInput = parseInt(minInput.value, 10) - 10;
+  counter = 0;
+  
   maxInput.value = newMaxInput;
   numberInput.max = newMaxInput;
 
-  var newMinInput = parseInt(minInput.value, 10) - 10;
   minInput.value = newMinInput;
   numberInput.min = newMinInput;
 
-  counter = 0;
   generateRandomNumber();
   rangeIncreased.innerHTML = '<p>Your max has increased by <strong>10</strong>!</p><p>Your min has decreased by <strong>10</strong>!</p>';
 }
 
+//Increases the guess count until the user gets the correct answer.
 function increaseGuessCount() {
   counter ++;
   guessCount.innerText = counter;
@@ -122,5 +139,9 @@ function resetPage() {
   tooHighLow.innerText = '';
   rangeIncreased.innerHTML = '';
   guessCount.innerText = 0;
+  resetButton.disabled = true;
+  toggleClearButton();
+  toggleGuessButton();
   generateRandomNumber();
+
 }

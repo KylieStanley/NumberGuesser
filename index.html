@@ -11,14 +11,14 @@
       <h1 class="guesser-header">Guesser</h1>
     </header>
     <form>
-      <input type="number" name="numberfield" placeholder="Guess from 1-100 or choose your own:" min="1" max="100" class="number-input" oninput="toggleClearButton()">
-      <label>Min<input type="number" name="min-number" class="min-input" placeholder="min" value ='1' oninput="generateRandomNumber()"></label>
-      <label>Max<input type="number" name="max-number" class="max-input" placeholder="max" value='100' oninput="generateRandomNumber()"></label>
+      <input type="number" name="numberfield" placeholder="Guess from 1-100 or choose your own:" min="1" max="100" class="number-input" oninput="toggleClearButton(); toggleGuessButton();">
+      <label>Min:<input type="number" name="min-number" class="min-input" placeholder="min" value ='1' oninput="generateRandomNumber();"></label>
+      <label>Max:<input type="number" name="max-number" class="max-input" placeholder="max" value='100' oninput="generateRandomNumber();"></label>
       <p class="guess-count">Guess count:</p>
       <p class="guess-count-value"></p>
       <div class="range-increased"></div>
       <section class="guess-clear-buttons">
-        <button type="button" id="guess-button">Guess</button>
+        <button type="button" id="guess-button" disabled>Guess</button>
         <button type="button" id="clear-button" disabled>Clear</button>
       </section>
       <section>

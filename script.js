@@ -1,30 +1,38 @@
+var numberInput = document.querySelector('.number-input');
 var rangeIncreased = document.querySelector('.range-increased');
 var guessButton = document.querySelector('#guess-button');
 var clearButton = document.querySelector('#clear-button');
-var yourGuessWas = document.querySelector('#guess-value');
+var yourGuessWas = document.querySelector('#your-guess-was');
 var yourGuess = document.querySelector('#display-guess');
 var tooHighLow = document.querySelector('#too-high-low');
-var numberInput = document.querySelector('.number-input');
+var maxInput = document.querySelector('.max-input');
+var minInput = document.querySelector('.min-input');
 var resetButton = document.querySelector('.reset-button');
-var randomNumber = Math.floor(Math.random() * 100 + 1);
-var maxInt = parseInt(100, 10);
-var minInt = parseInt(1, 10);
 
-//generate a random number when input fields are typed in
+//Display how many guesses user has made
+var guessCount = document.querySelector('.guess-count-value');
+guessCount.innerText = 0;
+var counter = 0;
+
+//Default random number anbd min/max on page load
+var randomNumber = Math.floor(Math.random() * 100 + 1);
+var maxInt = 100;
+var minInt = 1;
+
+//Guess and clear buttons
+guessButton.addEventListener('click', displayGuessInfo);
+clearButton.addEventListener('click', clearInput);
+resetButton.addEventListener('click', resetPage);
+
+//generate a random number when input fields are typed in or range increases
 function generateRandomNumber() {
-  var maxInput = document.querySelector('.max-input');
-  var minInput = document.querySelector('.min-input');
-  maxInput = document.querySelector('.max-input');
   maxInt = parseInt(maxInput.value, 10);
   minInt = parseInt(minInput.value, 10);
 
   if (maxInput.value.length > 0 && minInput.value.length > 0) {
     randomNumber = Math.floor(Math.random() * (maxInt - minInt + 1) + minInt);
-  } 
+  }
 }
-
-clearButton.addEventListener('click', clearInput);
-guessButton.addEventListener('click', displayGuessInfo);
 
 //change input to number and display information to user on correctness of guess
 function displayGuessInfo() {
@@ -34,23 +42,26 @@ function displayGuessInfo() {
   var convertedToInt = parseInt(guessed, 10); 
   
   if (isNaN(convertedToInt)) {
+    yourGuessWas.innerText = '';
+    yourGuess.innerText = '';
     tooHighLow.innerText = 'This is not a number!';
-    yourGuessWas.innerText = '';
-    yourGuess.innerText = '';
   } else if (convertedToInt > maxInt || convertedToInt < minInt) {
-    tooHighLow.innerText = 'Your number is outside the range!';
     yourGuessWas.innerText = '';
     yourGuess.innerText = '';
-  } else if (convertedToInt === randomNumber) {
-    tooHighLow.innerText = 'BOOM!';
+    tooHighLow.innerText = 'Your number is outside the range!';
+  }  else if (convertedToInt > randomNumber) {
     displayUserGuess();
-    increaseRange();
-  } else if (convertedToInt > randomNumber) {
+    increaseGuessCount();
     tooHighLow.innerText = 'That is too high';
-    displayUserGuess();
   } else if (convertedToInt < randomNumber) {
-    tooHighLow.innerText = 'That is too low';
     displayUserGuess();
+    increaseGuessCount();
+    tooHighLow.innerText = 'That is too low';
+  } else if (convertedToInt === randomNumber) {
+    displayUserGuess();
+    increaseGuessCount();
+    increaseRange();
+    tooHighLow.innerText = 'BOOM!';
   }
   enableResetButton();
 };
@@ -81,20 +92,35 @@ function enableResetButton() {
   resetButton.disabled = false;
 }
 
-
 //Increases the range when correct
 function increaseRange() {
-  var maxInput = document.querySelector('.max-input');
   var newMaxInput = parseInt(maxInput.value, 10) + 10;
   maxInput.value = newMaxInput;
   numberInput.max = newMaxInput;
 
-  var minInput = document.querySelector('.min-input');
   var newMinInput = parseInt(minInput.value, 10) - 10;
   minInput.value = newMinInput;
   numberInput.min = newMinInput;
 
+  counter = 0;
   generateRandomNumber();
   rangeIncreased.innerHTML = '<p>Your max has increased by <strong>10</strong>!</p><p>Your min has decreased by <strong>10</strong>!</p>';
 }
 
+function increaseGuessCount() {
+  counter ++;
+  guessCount.innerText = counter;
+}
+
+//Resets the page when reset is clicked
+function resetPage() {
+  numberInput.value = '';
+  minInput.value = 1;
+  maxInput.value = 100;
+  yourGuessWas.innerText = '';
+  yourGuess.innerText = '';
+  tooHighLow.innerText = '';
+  rangeIncreased.innerHTML = '';
+  guessCount.innerText = 0;
+  generateRandomNumber();
+}

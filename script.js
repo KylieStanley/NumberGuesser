@@ -62,7 +62,7 @@ function displayGuessInfo() {
     displayUserGuess();
     increaseGuessCount();
     increaseRange();
-    tooHighLow.innerText = 'HOORAY!';
+    tooHighLow.innerText = 'BOOM!';
     rotateText();
   }
   enableResetButton();
